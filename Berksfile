@@ -1,0 +1,11 @@
+site :opscode
+cookbook 'yum'
+cookbook 'yum-repoforge'
+cookbook 'nginx'
+cookbook 'sysstat'
+cookbook 'tmux'
+cookbook 'ntp'
+cookbook 'build-essential'
+cookbook 'git'
+cookbook 'bind9-chroot'
+cookbook 'rbenv'

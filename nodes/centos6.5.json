@@ -1,1 +1,13 @@
-{"run_list":[]}
+{
+    "run_list":[
+//        "recipe[yum::epel]",
+        "recipe[yumrepos::remi]",
+        "recipe[yumrepos::zenoss]",
+        "recipe[yum]",
+        "recipe[yum-epel]",
+        "recipe[yum-repoforge]",
+        "recipe[nginx]",
+        "recipe[rsyslog]",
+        "recipe[devtools]"
+    ]
+}
