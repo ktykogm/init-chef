@@ -8,4 +8,3 @@ data_bag_path    "data_bags"
 knife[:berkshelf_path] = "cookbooks"
 
 client_key     '/Users/ktyk/.chef/ktyk.pem'
-#cookbook_path    [ './cookbooks' ]
