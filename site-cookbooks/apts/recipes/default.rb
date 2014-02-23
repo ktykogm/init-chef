@@ -8,7 +8,7 @@
 #
 
 if node["platform"] == "ubuntu"
-  %w[sysstat dstat bind9utils].each do|pkg|
+  %w[bind9utils silversearcher-ag].each do|pkg|
     package pkg do
       action :install
     end

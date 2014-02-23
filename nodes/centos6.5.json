@@ -8,8 +8,9 @@
         "recipe[yum-epel]",
         "recipe[yum-repoforge]",
         "recipe[yums]",
-        "recipe[devtools]"
+        "recipe[devtools]",
         "recipe[rsyslog]",
-        "recipe[nginx]",
+        "recipe[common-name-tools]",
+        "recipe[nginx]"
     ]
 }

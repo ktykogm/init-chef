@@ -17,7 +17,7 @@ end
 case node["platform_family"]
 when "debian"
   # do things on debian-ish platforms (debian, ubuntu, linuxmint)
-  %w[devscripts libreadline6-dev libssl-dev git git-core].each do|pkg|
+  %w[devscripts libreadline6-dev libssl-dev].each do|pkg|
     package pkg do
       action :install
     end

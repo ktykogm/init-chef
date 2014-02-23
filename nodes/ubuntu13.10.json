@@ -1,6 +1,7 @@
 {
     "run_list":[
-        "recipe[apts::default]",
-        "recipe[devtools::default]"
+        "recipe[apts]",
+        "recipe[devtools]",
+        "recipe[common-name-tools]"
     ]
 }
