@@ -11,6 +11,7 @@ readonly progress_msg="Initialization in progress ---> "
 readonly wait_msg='Please wait....'
 berks="$bundler berks"
 knife="$bundler knife"
+sshconfig="$HOME/.ssh/config"
 
 rm -f $LOGFILE
 
@@ -44,6 +45,9 @@ echo `timestmp` $msg |logging
 
 # Bundle install
 echo `timestmp` ": Start of bundler." |logging
+
+gem list | grep bundler || gem install bundler #<= Pipe in order to obtain a false exit_status.
+
 bundle install --path vendor/bundle
 err_handle bundle install
 echo `timestmp` ": End of bundler." |logging
@@ -60,16 +64,6 @@ else
   echo `timestmp` ": Had you made the key to Chef?" |logging
   exit 1
 fi
-
-progress 15%
-
-# Bundler check
-echo "Checking use of the bundle of gems."
-for bundles in berks knife
-do
-  bundle show $bundles
-  [ $? = 7 ] && $bundles=${bundles#$bundler}
-done
 
 progress 20%
 
@@ -101,11 +95,11 @@ else
   do
     case $i in
       "ubuntu13.10")
-        vagrant box add $vm http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box |logging
+        vagrant box add $i http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box |logging
         echo "Added vagrant box of $i"
         ;;
       "centos6.5")
-        vagrant box add $vm https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box |logging
+        vagrant box add $i https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box |logging
         echo "Added vagrant box of $i"
         ;;
       *)
@@ -125,11 +119,14 @@ echo `timestmp` ": Vagrant has been started." |logging
 progress 50%
 
 echo "Check of ssh config for vagrant access."
+
+[ -O $sshconfig ] || { mkdir -p ~/.ssh ; touch $sshconfig; chmod 600 $sshconfig;}
+
 for i in $vm
 do
-  [[ $(grep $i ~/.ssh/config) ]] || { \
-    vagrant ssh-config $i >> ~/.ssh/config ;
-    echo "Added .ssh/config for access of the vagrant.";
+  [[ $(grep $i $sshconfig ) ]] || { \
+    vagrant ssh-config $i >> $sshconfig ;
+    echo "Added $sshconfig for access of the vagrant.";
   }
 done
 

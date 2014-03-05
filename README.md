@@ -18,12 +18,25 @@
 * 解析ツールを入れる
 * その他使いそうなものを入れる
 
-* 当方環境
-* Mac OS X Marvericks(10.9)
+* 当方環境(動作確認済)
+* Mac OS X Marvericks(10.9) + rbenv
+* Win7 + Cygwin64 + rbenv
 
 * すみません、英語が果てしなく苦手です...。 orz
 * ソースのコメント等でおかしいところがあったら、レビューコメント頂けると頂けると嬉しいです...
 * ソースについてもコメント頂けたら、嬉しいです! (^o^)/
+
+## Requiments
+
+* Ruby "> 2.0"
+* libxml2 iconv iconv-devel libiconv libiconv-devel libxml2-devel libxslt1-devel
+* Vagrant
+
+## Notice
+
+* Cygwinは、以下の対応が必要です
+`$ peflags -v -x$[ 2*1024**2 ] -X$[ 256*2048 ] ~/.rbenv/versions/*/bin/ruby`
+* See : http://seesaawiki.jp/w/kou1okada/d/Cygwin%20-%20Ruby
 
 ## Installation
 
