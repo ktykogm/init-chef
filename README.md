@@ -19,8 +19,8 @@
 * その他使いそうなものを入れる
 
 * 当方環境(動作確認済)
-* Mac OS X Marvericks(10.9) + rbenv
-* Win7 + Cygwin64 + rbenv
+ * Mac OS X Marvericks(10.9) + rbenv
+ * Win7 + Cygwin64 + rbenv
 
 * すみません、英語が果てしなく苦手です...。 orz
 * ソースのコメント等でおかしいところがあったら、レビューコメント頂けると頂けると嬉しいです...
@@ -31,12 +31,30 @@
 * Ruby "> 2.0"
 * libxml2 iconv iconv-devel libiconv libiconv-devel libxml2-devel libxslt1-devel
 * Vagrant
+* Virtual Box
+* chefの鍵
+ * 取得して、sbin/init-chef/.chef/knife.rb のclient_key のPathを自分の環境に
+合わせてください
+ * 鍵の取得場所
+> https://preview.opscode.com/signup?ref=community
+
+
 
 ## Notice
 
 * Cygwinは、以下の対応が必要です
-`$ peflags -v -x$[ 2*1024**2 ] -X$[ 256*2048 ] ~/.rbenv/versions/*/bin/ruby`
-* See : http://seesaawiki.jp/w/kou1okada/d/Cygwin%20-%20Ruby
+ * rbenv
+
+    `$ peflags -v -x$[ 2*1024**2 ] -X$[ 256*2048 ] ~/.rbenv/versions/*/bin/ruby`
+  - See : http://seesaawiki.jp/w/kou1okada/d/Cygwin%20-%20Ruby
+
+ * Virtual Box
+   - CygwinのDirからVbox Vmsが見られるようになることがあります。
+  すると、既存のがあるとOS再起動後に消えたように見えます。その際は以下。
+
+     1.  VBoxのファイル => 環境設定から  一般を選択
+     2.  デフォルトの仮想マシンフォルダーを通常のC:\Users\ユーザ\VirtualBox VMs のUNC Pathに戻します
+     3.  OSを再起動します
 
 ## Installation
 
